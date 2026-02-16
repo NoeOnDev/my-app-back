@@ -11,13 +11,18 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password as PasswordRule;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
     public function me(Request $request): JsonResponse
     {
+        $user = $request->user();
+
         return response()->json([
-            'user' => $request->user(),
+            'user' => $user,
+            'roles' => $user->getRoleNames()->values(),
+            'permissions' => $user->getAllPermissions()->pluck('name')->values(),
         ]);
     }
 
@@ -30,11 +35,15 @@ class AuthController extends Controller
         ]);
 
         $user = User::create($validated);
+        Role::findOrCreate('usuario', 'web');
+        $user->assignRole('usuario');
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'message' => 'Registro exitoso.',
             'user' => $user,
+            'roles' => $user->getRoleNames()->values(),
+            'permissions' => $user->getAllPermissions()->pluck('name')->values(),
             'token' => $token,
             'token_type' => 'Bearer',
         ], 201);
@@ -60,6 +69,8 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Inicio de sesión exitoso.',
             'user' => $user,
+            'roles' => $user->getRoleNames()->values(),
+            'permissions' => $user->getAllPermissions()->pluck('name')->values(),
             'token' => $token,
             'token_type' => 'Bearer',
         ]);

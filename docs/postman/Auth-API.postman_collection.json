@@ -256,6 +256,724 @@
       }
     },
     {
+      "name": "Admin - Ping (role:admin)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/admin/ping",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "ping"
+          ]
+        },
+        "description": "Endpoint de prueba protegido por rol admin."
+      }
+    },
+    {
+      "name": "Admin - Users (permission:users.read)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/admin/users?page={{page}}&per_page={{perPage}}&search={{search}}&sort_by={{sortBy}}&sort_dir={{sortDir}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "{{page}}"
+            },
+            {
+              "key": "per_page",
+              "value": "{{perPage}}"
+            },
+            {
+              "key": "search",
+              "value": "{{search}}"
+            },
+            {
+              "key": "sort_by",
+              "value": "{{sortBy}}"
+            },
+            {
+              "key": "sort_dir",
+              "value": "{{sortDir}}"
+            }
+          ]
+        },
+        "description": "Listado de usuarios protegido por permiso users.read."
+      }
+    },
+    {
+      "name": "Admin - Roles",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/admin/roles?page={{page}}&per_page={{perPage}}&search={{search}}&sort_by={{sortBy}}&sort_dir={{sortDir}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "roles"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "{{page}}"
+            },
+            {
+              "key": "per_page",
+              "value": "{{perPage}}"
+            },
+            {
+              "key": "search",
+              "value": "{{search}}"
+            },
+            {
+              "key": "sort_by",
+              "value": "{{sortBy}}"
+            },
+            {
+              "key": "sort_dir",
+              "value": "{{sortDir}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Permissions",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/admin/permissions?page={{page}}&per_page={{perPage}}&search={{search}}&sort_by={{sortBy}}&sort_dir={{sortDir}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "permissions"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "{{page}}"
+            },
+            {
+              "key": "per_page",
+              "value": "{{perPage}}"
+            },
+            {
+              "key": "search",
+              "value": "{{search}}"
+            },
+            {
+              "key": "sort_by",
+              "value": "{{sortBy}}"
+            },
+            {
+              "key": "sort_dir",
+              "value": "{{sortDir}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Create Role",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"editor\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/roles",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "roles"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Update Role",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"editor-jr\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/roles/{{roleId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "roles",
+            "{{roleId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Delete Role",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/admin/roles/{{roleId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "roles",
+            "{{roleId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Sync Role Permissions",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"permissions\": [\"users.read\"]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/roles/{{roleId}}/sync-permissions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "roles",
+            "{{roleId}}",
+            "sync-permissions"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Create Permission",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"posts.publish\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/permissions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "permissions"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Update Permission",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"posts.publish.own\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/permissions/{{permissionId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "permissions",
+            "{{permissionId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Delete Permission",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/admin/permissions/{{permissionId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "permissions",
+            "{{permissionId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Assign Role",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"role\": \"admin\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users/{{targetUserId}}/assign-role",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users",
+            "{{targetUserId}}",
+            "assign-role"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Remove Role",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"role\": \"admin\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users/{{targetUserId}}/remove-role",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users",
+            "{{targetUserId}}",
+            "remove-role"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Sync Roles",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roles\": [\"usuario\"]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users/{{targetUserId}}/sync-roles",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users",
+            "{{targetUserId}}",
+            "sync-roles"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Give Permission",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"permission\": \"users.read\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users/{{targetUserId}}/give-permission",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users",
+            "{{targetUserId}}",
+            "give-permission"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Revoke Permission",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"permission\": \"users.read\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users/{{targetUserId}}/revoke-permission",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users",
+            "{{targetUserId}}",
+            "revoke-permission"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Admin - Sync Permissions",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"permissions\": [\"users.read\"]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users/{{targetUserId}}/sync-permissions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users",
+            "{{targetUserId}}",
+            "sync-permissions"
+          ]
+        }
+      }
+    },
+    {
       "name": "Auth - Forgot Password",
       "request": {
         "method": "POST",
@@ -354,6 +1072,38 @@
     {
       "key": "resetToken",
       "value": ""
+    },
+    {
+      "key": "targetUserId",
+      "value": "1"
+    },
+    {
+      "key": "page",
+      "value": "1"
+    },
+    {
+      "key": "perPage",
+      "value": "15"
+    },
+    {
+      "key": "search",
+      "value": ""
+    },
+    {
+      "key": "sortBy",
+      "value": "name"
+    },
+    {
+      "key": "sortDir",
+      "value": "asc"
+    },
+    {
+      "key": "roleId",
+      "value": "1"
+    },
+    {
+      "key": "permissionId",
+      "value": "1"
     }
   ]
 }
